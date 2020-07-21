@@ -1,4 +1,5 @@
-# ZBCollectionViewSectionBackgroundDemo
+# ZBViewSectionBackgroundDemo
+UITableView 实现section带背景颜色，section圆角的Demo
 UICollectionView 实现section带背景颜色，headerView圆角的Demo
 
 
