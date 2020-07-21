@@ -1,12 +1,13 @@
 //
 //  AppDelegate.m
-//  ZBCollectionViewSectionBackgroundDemo
+//  ZBViewSectionBackgroundDemo
 //
-//  Created by ZB on 2020/2/21.
+//  Created by ZB on 2020/7/21.
 //  Copyright © 2020 ZB. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "BaseTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    BaseTabBarController *tabBarController = [[BaseTabBarController alloc]init];
+    self.window.rootViewController = tabBarController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

@@ -1,4 +1,13 @@
+//
+//  SceneDelegate.m
+//  ZBViewSectionBackgroundDemo
+//
+//  Created by ZB on 2020/7/21.
+//  Copyright © 2020 ZB. All rights reserved.
+//
+
 #import "SceneDelegate.h"
+#import "BaseTabBarController.h"
 
 @interface SceneDelegate ()
 
@@ -11,6 +20,20 @@
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    if (scene) {
+        if (@available(iOS 13.0, *)) {
+            UIWindowScene *windowScene = (UIWindowScene *)scene;
+            self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
+            self.window.frame = windowScene.coordinateSpace.bounds;
+        } else {
+            self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            self.window.backgroundColor = [UIColor whiteColor];
+        }
+        
+        BaseTabBarController *tabBarController = [[BaseTabBarController alloc]init];
+        self.window.rootViewController = tabBarController;
+        [self.window makeKeyAndVisible];
+    }
 }
 
 

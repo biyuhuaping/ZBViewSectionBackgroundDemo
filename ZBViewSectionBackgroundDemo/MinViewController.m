@@ -1,27 +1,27 @@
 //
-//  ViewController.m
-//  ZBCollectionViewSectionBackgroundDemo
+//  MinViewController.m
+//  ZBViewSectionBackgroundDemo
 //
-//  Created by ZB on 2020/2/21.
+//  Created by ZB on 2020/7/21.
 //  Copyright © 2020 ZB. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MinViewController.h"
 #import "ZBCollectionViewFlowLayout.h"
 #import "HeaderReusableView.h"
 #import "CollectionViewCell.h"
 
-@interface ViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, ZBCollectionViewDelegateFlowLayout>
+@interface MinViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, ZBCollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @end
 
-@implementation ViewController
+@implementation MinViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view from its nib.
     [self.view addSubview:self.collectionView];
 }
 

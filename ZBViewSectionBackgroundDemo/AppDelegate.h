@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  ZBCollectionViewSectionBackgroundDemo
+//  ZBViewSectionBackgroundDemo
 //
-//  Created by ZB on 2020/2/21.
+//  Created by ZB on 2020/7/21.
 //  Copyright © 2020 ZB. All rights reserved.
 //
 
@@ -10,6 +10,7 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (strong, nonatomic) UIWindow * window;
 
 @end
 
