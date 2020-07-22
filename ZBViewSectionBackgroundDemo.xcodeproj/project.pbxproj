@@ -89,7 +89,7 @@
 				39E990AE24C683CA0053D2FE /* SceneDelegate.h */,
 				39E990AF24C683CA0053D2FE /* SceneDelegate.m */,
 				39E990C424C686720053D2FE /* BaseViewController */,
-				39E990DB24C688500053D2FE /* ZBTableViewSection */,
+				39E990EE24C80E5B0053D2FE /* ZBTableViewSection */,
 				39E990DA24C688340053D2FE /* ZBCollectionViewSection */,
 				39E990D524C6876F0053D2FE /* HomeViewController.h */,
 				39E990D624C6876F0053D2FE /* HomeViewController.m */,
@@ -123,13 +123,6 @@
 			path = ZBCollectionViewSection;
 			sourceTree = "<group>";
 		};
-		39E990DB24C688500053D2FE /* ZBTableViewSection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ZBTableViewSection;
-			sourceTree = "<group>";
-		};
 		39E990DC24C6887F0053D2FE /* ZBCollectionReusableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +145,13 @@
 				39E990E624C688980053D2FE /* HeaderReusableView.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		39E990EE24C80E5B0053D2FE /* ZBTableViewSection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ZBTableViewSection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

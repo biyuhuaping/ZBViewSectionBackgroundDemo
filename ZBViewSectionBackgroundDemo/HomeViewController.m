@@ -26,7 +26,7 @@
 
 // 有多少个分组,默认为1
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 6;
+    return 16;
 }
 
 // 多少行
@@ -36,7 +36,7 @@
 
 // header view的高度。
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 20;
+    return 40;
 }
 
 // 行高
@@ -46,7 +46,38 @@
 
 // 返回指定section header的view
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    return [[UIView alloc]init];
+    static NSString *headerSectionID = @"headerSectionID";
+    UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerSectionID];
+    if (!headerView){
+        headerView = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:headerSectionID];
+        headerView.contentView.backgroundColor = [UIColor whiteColor];
+        
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 415, 40)];
+        view.backgroundColor = [UIColor redColor];
+        
+        CGFloat radius = 8;
+        CGRect bounds = CGRectInset(view.bounds, 15, 0);
+        UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:bounds byRoundingCorners:(UIRectCornerTopLeft|UIRectCornerTopRight) cornerRadii:CGSizeMake(radius, radius)];
+        
+        CAShapeLayer *normalLayer = [[CAShapeLayer alloc] init];
+        normalLayer.path = bezierPath.CGPath;
+        normalLayer.fillColor = [UIColor yellowColor].CGColor;
+        [view.layer insertSublayer:normalLayer atIndex:0];
+        
+        [headerView.contentView addSubview:view];
+        
+//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 400, 40)];
+//        label.backgroundColor = [UIColor greenColor];
+//        label.tag = 1000;
+//        label.textColor = [UIColor blueColor];
+//        label.font = [UIFont systemFontOfSize:16];
+//        [headerView.contentView addSubview:label];
+    }
+    headerView.textLabel.text = [NSString stringWithFormat:@"第%ld组", section];
+//    headerView.detailTextLabel.text = [NSString stringWithFormat:@"==%ld", section];
+    UILabel *lab = (UILabel *)[headerView viewWithTag:1000];
+    lab.text = [NSString stringWithFormat:@"第%ld组", section];
+    return headerView;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -125,7 +156,7 @@
 #pragma mark - Lazy
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
