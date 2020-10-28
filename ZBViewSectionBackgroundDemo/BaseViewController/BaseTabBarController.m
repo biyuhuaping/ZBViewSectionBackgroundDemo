@@ -8,6 +8,7 @@
 
 #import "BaseTabBarController.h"
 #import "HomeViewController.h"
+#import "WorkViewController.h"
 #import "MinViewController.h"
 
 @interface BaseTabBarController ()
@@ -25,14 +26,17 @@
 }
 
 - (void)initTabbarItems {
-    NSArray *imageArray = @[@"首页非当前页icon",@"我的非当前页icon"];
-    NSArray *selectedImageArray = @[@"首页当前页icon", @"我的当前页icon"];
+    NSArray *imageArray = @[@"首页非当前页icon", @"首页非当前页icon", @"我的非当前页icon"];
+    NSArray *selectedImageArray = @[@"首页当前页icon", @"首页当前页icon", @"我的当前页icon"];
 
 //    NSArray *imageArray = @[@"首页非当前页icon",@"投资非当前页icon", @"财富非当前页icon", @"我的非当前页icon"];
 //    NSArray *selectedImageArray = @[@"首页当前页icon", @"投资当前页icon", @"财富当前页icon", @"我的当前页icon"];
     
     HomeViewController *home = [[HomeViewController alloc] init];
     [self addChildViewController:home navTitle:nil tabbarTitle:@"首页" imageNamed:imageArray[0] selectedImageName:selectedImageArray[0]];
+    
+    WorkViewController *work = [[WorkViewController alloc]initWithNibName:@"WorkViewController" bundle:nil];
+    [self addChildViewController:work navTitle:nil tabbarTitle:@"工作" imageNamed:imageArray[0] selectedImageName:selectedImageArray[0]];
     
     MinViewController *min = [[MinViewController alloc] init];
     [self addChildViewController:min navTitle:nil tabbarTitle:@"我的" imageNamed:imageArray[1] selectedImageName:selectedImageArray[1]];
