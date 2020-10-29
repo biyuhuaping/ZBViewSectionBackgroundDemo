@@ -50,6 +50,7 @@ static HealthKitManager *_healthManager;
             });
         }
     } else {
+        NSLog(@"设备不支持healthKit");
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"iOS 系统低于8.0不能获取健康数据，请升级系统" forKey:NSLocalizedDescriptionKey];
         NSError *aError = [NSError errorWithDomain:@"xxxx.com.cn" code:0 userInfo:userInfo];
         resultBlock(NO,aError);
@@ -80,64 +81,21 @@ static HealthKitManager *_healthManager;
 
 #pragma mark - 构造当天时间段查询参数
 - (NSPredicate *)predicateForSamples:(NSString *)day{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *now = [NSDate date];
-    NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:now];
-    [components setHour:0];
-    [components setMinute:0];
-    [components setSecond: 0];
-//    [components setDay:1];
-
-    NSDate *startDate = [calendar dateFromComponents:components];
-    NSDate *endDate = [calendar dateByAddingUnit:NSCalendarUnitDay value:-day.integerValue toDate:startDate options:0];
-    NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionNone];
-    return predicate;
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *endDate = [NSDate date];//[calendar startOfDayForDate:[NSDate date]];
+    NSDate *startDate = [self getDayDateWithSpace:-day.integerValue byCurrentDate:endDate];
+    return [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionStrictStartDate];
 }
 
-- (NSPredicate *)predicateForSamplesToday1 {
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *components = [cal components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:[NSDate date]];
-
-    [components setHour:-[components hour]];
-    [components setMinute:-[components minute]];
-    [components setSecond:-[components second]];
-    NSDate *today = [cal dateByAddingComponents:components toDate:[[NSDate alloc] init] options:0]; //This variable should now be pointing at a date object that is the start of today (midnight);
-    
-    [components setHour:-24];
-    [components setMinute:0];
-    [components setSecond:0];
-    NSDate *yesterday = [cal dateByAddingComponents:components toDate: today options:0];
-    
-    components = [cal components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:[NSDate date]];
-
-    [components setDay:([components day] - ([components weekday] - 1))];
-    NSDate *thisWeek = [cal dateFromComponents:components];
-    
-    [components setDay:([components day] - 7)];
-    NSDate *lastWeek = [cal dateFromComponents:components];
-    
-    [components setDay:([components day] - ([components day] -1))];
-    NSDate *thisMonth = [cal dateFromComponents:components];
-    
-    [components setMonth:([components month] - 1)];
-    NSDate *lastMonth = [cal dateFromComponents:components];
-    NSLog(@"today= %@",today);
-    NSLog(@"yesterday= %@",yesterday);
-    NSLog(@"thisWeek= %@",thisWeek);
-    NSLog(@"lastWeek= %@",lastWeek);
-    NSLog(@"thisMonth= %@",thisMonth);
-    NSLog(@"lastMonth= %@",lastMonth);
-    
-    
-    
-    [components setHour:0];
-    [components setMinute:0];
-    [components setSecond: 0];
-    
-    NSDate *startDate = [cal dateFromComponents:components];
-    NSDate *endDate = [cal dateByAddingUnit:NSCalendarUnitDay value:1 toDate:startDate options:0];
-    NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionNone];
-    return predicate;
+/// 根据cDate 返回差N天的date，
+/// @param daySpace 天差值：-以前，+未来
+/// @param cDate cDate description
+- (NSDate *)getDayDateWithSpace:(NSInteger)daySpace byCurrentDate:(NSDate *)cDate{
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSCalendar *greCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [greCalendar setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    comps.day = daySpace;
+    return [greCalendar dateByAddingComponents:comps toDate:cDate options:0];
 }
 
 #pragma mark - 获取协处理器步数

@@ -20,9 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 ///获取健康数据(步数)
 - (void)getStepCountWith:(NSString *)day block:(void (^)(double stepCount, NSError *error))queryResultBlock;
 
-///构造当天时间段查询参数
-- (NSPredicate *)predicateForSamplesToday;
-
 ///获取协处理器步数
 - (void)getCMPStepCount:(void(^)(double stepCount, NSError *error))completion;
 

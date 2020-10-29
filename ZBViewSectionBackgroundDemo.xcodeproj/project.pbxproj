@@ -399,14 +399,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ZBViewSectionBackgroundDemo/ZBViewSectionBackgroundDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8Q87842MZW;
+				DEVELOPMENT_TEAM = BNV27HH5PK;
 				INFOPLIST_FILE = ZBViewSectionBackgroundDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.biyuhuaping.ZBViewSectionBackgroundDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.ZBViewSectionBackgroundDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -418,14 +418,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ZBViewSectionBackgroundDemo/ZBViewSectionBackgroundDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8Q87842MZW;
+				DEVELOPMENT_TEAM = BNV27HH5PK;
 				INFOPLIST_FILE = ZBViewSectionBackgroundDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.biyuhuaping.ZBViewSectionBackgroundDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.ZBViewSectionBackgroundDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
