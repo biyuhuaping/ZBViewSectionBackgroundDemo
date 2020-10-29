@@ -32,6 +32,7 @@
     }];
 }
 
+//点击获取步数
 - (IBAction)getStepCountAction:(id)sender {
     [[HealthKitManager shareInstance] getStepCountWith:self.textField.text block:^(double stepCount, NSError * _Nonnull error){
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -39,6 +40,12 @@
             self.textField.text = @"";
         });
     }];
+}
+
+//收起键盘
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event{
+    [self.view endEditing:YES];
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 }
 
 @end

@@ -85,6 +85,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		397AD827254A762400FE5A4E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				39E990D524C6876F0053D2FE /* HomeViewController.h */,
+				39E990D624C6876F0053D2FE /* HomeViewController.m */,
+				397AD7AC2548567600FE5A4E /* WorkViewController.h */,
+				397AD7AD2548567600FE5A4E /* WorkViewController.m */,
+				397AD7AE2548567600FE5A4E /* WorkViewController.xib */,
+				39E990CB24C686F30053D2FE /* MinViewController.h */,
+				39E990CC24C686F30053D2FE /* MinViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		39E9909F24C683CA0053D2FE = {
 			isa = PBXGroup;
 			children = (
@@ -113,13 +127,7 @@
 				39E990C424C686720053D2FE /* BaseViewController */,
 				39E990EE24C80E5B0053D2FE /* ZBTableViewSection */,
 				39E990DA24C688340053D2FE /* ZBCollectionViewSection */,
-				39E990D524C6876F0053D2FE /* HomeViewController.h */,
-				39E990D624C6876F0053D2FE /* HomeViewController.m */,
-				397AD7AC2548567600FE5A4E /* WorkViewController.h */,
-				397AD7AD2548567600FE5A4E /* WorkViewController.m */,
-				397AD7AE2548567600FE5A4E /* WorkViewController.xib */,
-				39E990CB24C686F30053D2FE /* MinViewController.h */,
-				39E990CC24C686F30053D2FE /* MinViewController.m */,
+				397AD827254A762400FE5A4E /* ViewControllers */,
 				397AD7A5254823C800FE5A4E /* HealthKitManager.h */,
 				397AD7A6254823C800FE5A4E /* HealthKitManager.m */,
 				39E990B724C683CF0053D2FE /* Assets.xcassets */,
